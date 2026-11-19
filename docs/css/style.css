@@ -424,3 +424,6 @@ select { font: inherit; font-size: .95rem; padding: .5rem .7rem; border: 2px sol
 .nb-stat .num { font-family: var(--font-mono); font-size: 1.5rem; font-weight: 500; }
 .nb-stat .lab { font-size: .9rem; color: var(--ink-2); }
 @media (max-width: 46rem) { .nb { padding-left: 1.2rem; } .nb-dot { left: calc(-1.2rem - 11px); } .nb-card h3 { font-size: 1.45rem; } }
+
+/* long file paths must wrap on phones */
+p, li, figcaption, summary, .callout .body { overflow-wrap: anywhere; }

@@ -2,7 +2,8 @@
 // Used to test and screenshot the interactive Explore pages at real viewport widths.
 //   node src/browser_check.js <page.html> <scenario.js> [widths=1440,390]
 // scenario.js exports: async function run(p, width) with p.eval(expr), p.waitFor(expr, ms), p.click(sel), p.type(sel, text),
-// p.shot(name), p.log(...). Screenshots go to results/site_screenshots/<name>_<width>.png. Serves docs/ on a local port.
+// p.shot(name), p.log(...). Screenshots go to results/site_screenshots/<name>_<width>.png. Serves docs/ on a local port,
+// or tests a live site when BASE_URL is set (for example BASE_URL=https://tejassnaikk.github.io/vehicle-complaint-classifier/).
 const { spawn } = require("child_process");
 const http = require("http"), fs = require("fs"), path = require("path"), os = require("os");
 const root = path.resolve(__dirname, "..");
@@ -45,7 +46,7 @@ async function main() {
   let failed = 0;
   for (const w of widths) {
     await send("Emulation.setDeviceMetricsOverride", { width: w, height: 900, deviceScaleFactor: 1, mobile: w < 600 });
-    await send("Page.navigate", { url: `http://127.0.0.1:${port}/${page}` });
+    await send("Page.navigate", { url: (process.env.BASE_URL ? process.env.BASE_URL.replace(/\/?$/, "/") : `http://127.0.0.1:${port}/`) + page });
     await sleep(800);
     const p = {
       sleep,
