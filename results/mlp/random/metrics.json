@@ -1,0 +1,20 @@
+{
+  "val": {
+    "accuracy": 0.8835589941972921,
+    "macro_f1": 0.8845615646401154,
+    "weighted_f1": 0.8835352979092019,
+    "n": 7755
+  },
+  "test": {
+    "accuracy": 0.8840448858506385,
+    "macro_f1": 0.884859065054586,
+    "weighted_f1": 0.8835522766510444,
+    "n": 7753
+  },
+  "best_epoch": 1,
+  "epochs_run": 4,
+  "wall_time_s": 16.3,
+  "device": "mps",
+  "checkpoint": "mlp_random.pt",
+  "n_features": 30000
+}
