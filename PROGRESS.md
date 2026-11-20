@@ -507,3 +507,11 @@ Five static interactive pages under a separate "Explore" group (nav item, amber 
 
 ## Explore changes (2026-11-05, decisions by Tejas)
 Kept the 15.6 MB MLP. Removed the top-10-makes chart from the trends page. The notebook no longer parses PROGRESS.md. The game now picks a random system each round (all 10 possible every round, repeats allowed) and an unused complaint of that system, so players cannot win by elimination; a note on the page says systems can repeat, and the browser test checks that no complaint repeats within a game.
+
+## Public release (2026-11-19)
+- Team, course (CSCI 5122, section 872, Neural Networks and Deep Learning, CU Boulder, Fall 2026) and LICENSE holders filled in; the About placeholders are gone and `check_site.py --strict` passes. `CONTRIBUTING.md` added and linked from the README.
+- The old repo was renamed `vehicle-complaint-classifier-private` (private archive, full history). A new repo `tejassnaikk/vehicle-complaint-classifier` holds one orphan commit, "Public release", pushed as `main`. The local folder's `origin` points at the new repo; the old local history is the local branch `archive-main` and the remote `archive`.
+- Fresh clone of the new repo: privacy scan zero matches; a search of every text file in the commit found no e-mail addresses and no VINs. Phone and ZIP patterns matched only synthetic examples in `src/masking.py` and `PROGRESS.md` (555 numbers, "springfield, il 62704") and numbers inside SVG paths. URLs are NHTSA, GitHub, Google Fonts and license or XML namespace links.
+- Repo made public and GitHub Pages enabled from `/docs` on `main`: https://tejassnaikk.github.io/vehicle-complaint-classifier/ . Live checks (`src/check_live.py`, `src/browser_check.js` with `BASE_URL`): 12 pages and 54 site files load, 25 GitHub links resolve, the Explore pages load their data and work (Try it prediction, a full game, a Mix-up cell, Trends filters). The two www.nhtsa.gov links return 403 to bots and were not fetched.
+- Fixed after release: a long file path made the Results page 28 px wider than a phone screen (now wraps).
+- Commit author on the public repo is the GitHub noreply address, set as this repo's local git config, so the personal e-mail is not in the public history.
